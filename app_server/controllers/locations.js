@@ -83,10 +83,10 @@ const locationInfo = function(req, res){
 /* GET 'Add review' page */
 const addReview = function(req, res){
   res.render('location-review-form', {
-    title: 'Review Starcups on Loc8r',
-    pageHeader: { title: 'Review Starcups' }
+  title: 'Review Starcups on Loc8r',
+  pageHeader: { title: 'Review Starcups' }
   });
-};
+  };
 
 module.exports = {
   homelist,
