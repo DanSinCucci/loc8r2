@@ -1,5 +1,7 @@
 extends layout
 
+include _includes/sharedHTMLfunctions
+
 block content
   .row.banner
     .col-12
@@ -8,24 +10,16 @@ block content
 
   .row
     .col-12.col-md-8
-      .card
-        .card-block
-          h4
-            a(href="/location") Cryptic Mystic Book Emporium
-            small &nbsp;
-              i.fas.fa-star
-              i.fas.fa-star
-              i.fas.fa-star
-              i.far.fa-star
-              i.far.fa-star
-            span.badge.badge-pill.badge-default.float-right 100m
-          p.address 123 Appalachian Mountain Cove Rd., Green Mountain, NC 54321
-          .facilities
-            span.badge.badge-warning New & Used 
-            span.badge.badge-warning Collectible
-            span.badge.badge-warning Fiction, Non-fiction & Sci-Fi
-            span.badge.badge-warning Free wifi
-
+      each location in locations
+        .card
+          .card-block
+            h4
+              a(href="/location")= location.name
+              +outputRating(location.rating)
+              span.badge.badge-pill.badge-default.float-right= location.distance
+            p.address= location.address
+            .facilities
+              each facility in location.facilities
+                span.badge.badge-warning= facility
     .col-12.col-md-4
-      p.lead We have an amzing selection of books -new and used. We have fiction, non-fiction, science fiction and many more.
-      p.lead We also have free wi-fi throughout the store with comfortable seating.
+    p.lead= sidebar
