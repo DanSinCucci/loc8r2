@@ -3,11 +3,19 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const favicon = require('serve-favicon');
+const bodyParser = require('body-parser');
+require('./app_server/models/db');
 
 const indexRouter = require('./app_server/routes/index');
 const usersRouter = require('./app_server/routes/users');
 
 const app = express();
+
+app.listen(app.get('port'),
+  function(){
+    console.log("Express server listening on port " + app.get('port'));
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'app_server', 'views'));
